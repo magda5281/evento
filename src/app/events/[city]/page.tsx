@@ -1,16 +1,18 @@
 import H1 from '@/components/h1';
+import { EventoEvent } from '@/lib/types';
 
 type EventsPageProps = {
   params: {
     city: string;
   };
 };
+
 export default async function EventsPage({ params }: EventsPageProps) {
   const city = params.city;
   const APP_URL = process.env.APP_URL;
 
   const response = await fetch(`${APP_URL}?city=${city}`);
-  const events = await response.json();
+  const events: EventoEvent[] = await response.json();
 
   return (
     <main className='flex flex-col items-center px-3 py-24 min-h-[110vh]'>
