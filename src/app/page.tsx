@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import SearchForm from '@/components/search-form';
 import Link from 'next/link';
 
 export default function Home() {
@@ -12,13 +12,7 @@ export default function Home() {
         <span className='bold italic underline text-accent'>10,000 events</span>{' '}
         around you
       </p>
-      <form className='w-full sm:w-[36.25rem] '>
-        <input
-          className='w-full h-12 sm:h-16 rounded-lg bg-white/[7%] px-6 outline-none ring-accent/50 transition focus:ring-2 focus:bg-white/10'
-          placeholder='Search events in any city...'
-          spellCheck={false}
-        />
-      </form>
+      <SearchForm />
       <section className='mt-4 flex gap-x-4 text-sm text-white/50'>
         <p>Popular:</p>
         <div className='space-x-2 '>
