@@ -5,8 +5,12 @@ type EventsPageProps = {
     city: string;
   };
 };
-export default function EventsPage({ params }: EventsPageProps) {
+export default async function EventsPage({ params }: EventsPageProps) {
   const city = params.city;
+  const APP_URL = process.env.APP_URL;
+
+  const response = await fetch(`${APP_URL}?city=${city}`);
+  const events = await response.json();
 
   return (
     <main className='flex flex-col items-center px-3 py-24 min-h-[110vh]'>
@@ -15,6 +19,9 @@ export default function EventsPage({ params }: EventsPageProps) {
           ? 'All Events'
           : ` Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
+      {events.map((event) => (
+        <section key={event.id}>{event.name}</section>
+      ))}
     </main>
   );
 }
