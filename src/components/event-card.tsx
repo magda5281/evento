@@ -9,7 +9,7 @@ type EventCardProps = {
 export default function EventCard({ event }: EventCardProps) {
   return (
     <Link
-      className='flex-1 basis-80  max-w-[500px] rounded-lg bg-green-500'
+      className='flex-1 basis-80  max-w-[500px] rounded-lg '
       href={`/event/${event.slug}`}
     >
       <section className=' w-full flex flex-col  bg-white/[3%] relative overflow-hidden  rounded-lg transition hover:scale-105 active:scale[1.02]'>
