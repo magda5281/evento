@@ -1,6 +1,7 @@
 import EventsList from '@/components/events-list';
 import H1 from '@/components/h1';
 import { EventoEvent } from '@/lib/types';
+import { sleep } from '@/lib/utils';
 
 type EventsPageProps = {
   params: {
@@ -11,7 +12,7 @@ type EventsPageProps = {
 export default async function EventsPage({ params }: EventsPageProps) {
   const city = params.city;
   const APP_URL = process.env.APP_URL;
-
+  await sleep(2000);
   const response = await fetch(`${APP_URL}?city=${city}`);
   const events: EventoEvent[] = await response.json();
 

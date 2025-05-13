@@ -1,19 +1,20 @@
 import H1 from '@/components/h1';
+import { sleep } from '@/lib/utils';
 import Image from 'next/image';
 
-type EventsPageProps = {
+type EventPageProps = {
   params: {
     slug: string;
   };
 };
 
-export default async function EventPage({ params }: EventsPageProps) {
+export default async function EventPage({ params }: EventPageProps) {
   const slug = params.slug;
   const APP_URL = process.env.APP_URL;
-
+  sleep(10000);
   const response = await fetch(`${APP_URL}/${slug}`);
   const event = await response.json();
-  console.log(event);
+
   return (
     <main>
       <section className='relative  overflow-hidden flex justify-center items-center py-14 md:py-20 '>
