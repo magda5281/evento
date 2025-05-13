@@ -2,7 +2,7 @@ type ContainerProps = { children: React.ReactNode };
 
 export default function Container({ children }: ContainerProps) {
   return (
-    <div className=' flex flex-col justify-between min-h-screen max-w-7xl mx-auto bg-white/[5%]'>
+    <div className=' flex flex-col  min-h-screen max-w-7xl mx-auto bg-white/[5%]'>
       {children}
     </div>
   );
