@@ -48,12 +48,28 @@ export default async function EventPage({ params }: EventsPageProps) {
             <p className='whitespace-nowrap text-xl text-white/75'>
               Organized by <span className='italic'>{event.organizerName}</span>
             </p>
-            <button className='bg-white/20 text-lg capitalize sm:mt-auto  py-2 border-white/10 border-2 rounded-md bg-blur state-effects'>
+            <button className='bg-white/20 text-lg capitalize sm:mt-auto  py-2 border-white/10 border-2 rounded-md bg-blur state-effects state-effects:active'>
               Get tickets
             </button>
           </div>
         </div>
       </section>
+      <div className='text-center min-h-[75vh] flex flex-col gap-6'>
+        <Section h2='About this event' p={event.description} />
+        <Section h2='Location' p={event.location} />
+      </div>
     </main>
+  );
+}
+type SectionProps = {
+  h2: string;
+  p: string;
+};
+function Section({ h2, p }: SectionProps) {
+  return (
+    <section>
+      <h2 className='text-2xl mb-8'>{h2}</h2>
+      <p className='max-w-4xl mx-auto text-lg leading-8 text-white/75'>{p}</p>
+    </section>
   );
 }

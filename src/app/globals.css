@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.state-effects {
-  @apply hover:scale-105 active:scale:[1.02] transition focus:scale-105;
+@layer components {
+  .state-effects {
+    /* use only built-in utilities here: */
+    @apply hover:scale-105 focus:scale-105 transition;
+  }
+  /* then add the custom active state manually: */
+  .state-effects:active {
+    transform: scale(1.02);
+  }
 }
 /* 
 /* SCROLLBAR STYLING */
