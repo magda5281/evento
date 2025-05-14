@@ -11,7 +11,6 @@ type EventPageProps = {
 export default async function EventPage({ params }: EventPageProps) {
   const slug = params.slug;
   const APP_URL = process.env.APP_URL;
-  sleep(10000);
   const response = await fetch(`${APP_URL}/${slug}`);
   const event = await response.json();
 

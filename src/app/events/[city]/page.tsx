@@ -1,7 +1,7 @@
 import EventsList from '@/components/events-list';
+import EventsListWrapper from '@/components/events-list-wrapper';
 import H1 from '@/components/h1';
-import { EventoEvent } from '@/lib/types';
-import { sleep } from '@/lib/utils';
+import { Suspense } from 'react';
 
 type EventsPageProps = {
   params: {
@@ -11,10 +11,6 @@ type EventsPageProps = {
 
 export default async function EventsPage({ params }: EventsPageProps) {
   const city = params.city;
-  const APP_URL = process.env.APP_URL;
-  await sleep(2000);
-  const response = await fetch(`${APP_URL}?city=${city}`);
-  const events: EventoEvent[] = await response.json();
 
   return (
     <main className='flex flex-col items-center px-3 py-24 min-h-[110vh] '>
@@ -23,7 +19,9 @@ export default async function EventsPage({ params }: EventsPageProps) {
           ? 'All Events'
           : ` Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
-      <EventsList events={events} />
+      <Suspense>
+        <EventsListWrapper city={city} />
+      </Suspense>
     </main>
   );
 }
