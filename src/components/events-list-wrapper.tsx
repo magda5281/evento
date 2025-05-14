@@ -10,7 +10,7 @@ export default async function EventsListWrapper({
 }: EventsListWrapperProps) {
   const APP_URL = process.env.APP_URL;
   const response = await fetch(`${APP_URL}?city=${city}`, {
-    next: { revalidate: 60 }, // optional caching
+    next: { revalidate: 300 },
   });
   const events: EventoEvent[] = await response.json();
 
