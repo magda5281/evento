@@ -1,5 +1,6 @@
 import H1 from '@/components/h1';
-import { sleep } from '@/lib/utils';
+import { Metadata } from 'next';
+
 import Image from 'next/image';
 
 type EventPageProps = {
@@ -7,6 +8,20 @@ type EventPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: EventPageProps): Promise<Metadata> {
+  const slug = params.slug;
+
+  const APP_URL = process.env.APP_URL;
+  const response = await fetch(`${APP_URL}/${slug}`);
+  const event = await response.json();
+
+  return {
+    title: event.name,
+  };
+}
 
 export default async function EventPage({ params }: EventPageProps) {
   const slug = params.slug;
