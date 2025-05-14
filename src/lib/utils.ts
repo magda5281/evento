@@ -1,6 +1,6 @@
 import clsx, { ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { EventoEvent, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 export function cn(...inputs: ClassValue[]) {
@@ -12,11 +12,11 @@ export function capitalize(str: string) {
 }
 
 export async function getEvents(city: string) {
-  const APP_URL = process.env.APP_URL;
-  const response = await fetch(`${APP_URL}?city=${city}`, {
-    next: { revalidate: 300 },
+  const events = await prisma.eventoEvent.findMany({
+    where: {
+      city: capitalize(city),
+    },
   });
-  const events: EventoEvent[] = await response.json();
   return events;
 }
 
