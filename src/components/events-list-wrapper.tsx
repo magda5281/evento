@@ -3,12 +3,12 @@ import EventsList from './events-list';
 
 type EventsListWrapperProps = {
   city: string;
-  page: number;
+  page?: number;
 };
 
 export default async function EventsListWrapper({
   city,
-  page,
+  page = 1,
 }: EventsListWrapperProps) {
   const { events, totalCount } = await getEvents(city, page);
 
