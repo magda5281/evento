@@ -17,7 +17,7 @@ export default function Error({
 
   return (
     <main className='text-center mt-32'>
-      <H1 className='mb-6'>Something went wrong!</H1>
+      <H1 className='mb-6'>{error.message}</H1>
       <button
         className='bg-white/15 p-4 rounded-md hover:bg-white/25 '
         onClick={
