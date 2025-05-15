@@ -1,3 +1,6 @@
+export const dynamicParams = true;
+export const revalidate = 60;
+
 import H1 from '@/components/h1';
 import { getAllEventSlugs, getEvent } from '@/lib/utils';
 import { Metadata } from 'next';
