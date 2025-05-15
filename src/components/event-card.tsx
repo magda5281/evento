@@ -43,8 +43,8 @@ export default function EventCard({ event }: EventCardProps) {
 
         <div className='flex flex-col flex-1 items-center justify-center'>
           <h2 className='text-1xl font-semibold'>{event.name}</h2>
-          <p className='italic text-white/75 '>{event.organizerName}</p>
-          <p className='text-sm text-white/50 mt-4'>{event.location}</p>
+          <p className='italic text-slate-200 '>{event.organizerName}</p>
+          <p className='text-sm text-slate-400 mt-4'>{event.location}</p>
         </div>
 
         <section className='absolute left-2 top-2 sm:left-3 sm:top-3 bg-black/30  p-2 rounded-md flex flex-col justify-center items-center'>

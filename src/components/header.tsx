@@ -30,7 +30,7 @@ export default function Header() {
                 'hover:text-white transition relative flex items-center',
                 {
                   'text-white': activePathName === route.path,
-                  'text-white/50': activePathName !== route.path,
+                  'text-slate-400': activePathName !== route.path,
                 }
               )}
             >

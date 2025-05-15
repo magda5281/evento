@@ -13,7 +13,7 @@ export default function Home() {
         around you
       </p>
       <SearchForm />
-      <section className=' flex gap-x-4 text-sm text-white/50'>
+      <section className=' flex gap-x-4 text-sm text-slate-400'>
         <p>Popular:</p>
         <div className='space-x-2 '>
           <Link href={'/events/seattle'}> Seattle</Link>

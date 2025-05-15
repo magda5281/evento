@@ -13,7 +13,7 @@ const routes = [
 
 export default function Footer() {
   return (
-    <footer className='mt-auto flex justify-between items-center border-t border-white/10 px-3 py-2 sm:px-9  text-xs text-white/25'>
+    <footer className='mt-auto flex justify-between items-center border-t border-white/10 px-3 py-2 sm:px-9  text-xs text-slate-400'>
       <small className='text-xs'>
         &copy; 2025 HerDevLab. All rights reserved.
       </small>
