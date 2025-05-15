@@ -5,7 +5,7 @@ import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Container from '@/components/container';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Evento - Find events around you',
