@@ -1,4 +1,4 @@
-import { getEvents } from '@/lib/utils';
+import { getEvents } from '@/lib/server-utils';
 import EventsList from './events-list';
 
 type EventsListWrapperProps = {
