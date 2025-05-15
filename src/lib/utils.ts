@@ -2,6 +2,7 @@ import clsx, { ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import prisma from './db';
 import { notFound } from 'next/navigation';
+import { unstable_cache } from 'next/cache';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -11,16 +12,18 @@ export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export async function getEvents(city: string, page = 1) {
-  const events = await prisma.eventoEvent.findMany({
-    where:
-      city === 'all'
-        ? undefined // No filter → get all events
-        : {
-            city: {
-              equals: capitalize(city),
-            },
+export const getEvents = unstable_cache(async (city: string, page = 1) => {
+  const filter =
+    city === 'all'
+      ? undefined // No filter → get all events
+      : {
+          city: {
+            equals: capitalize(city),
           },
+        };
+
+  const events = await prisma.eventoEvent.findMany({
+    where: filter,
     orderBy: {
       date: 'asc',
     },
@@ -29,23 +32,15 @@ export async function getEvents(city: string, page = 1) {
   });
 
   const totalCount = await prisma.eventoEvent.count({
-    where:
-      city === 'all'
-        ? undefined // No filter → get all events
-        : {
-            city: {
-              equals: capitalize(city),
-            },
-          },
+    where: filter,
   });
 
   return {
     events,
     totalCount,
   };
-}
-
-export async function getEvent(slug: string) {
+});
+export const getEvent = unstable_cache(async (slug: string) => {
   const event = await prisma.eventoEvent.findUnique({
     where: {
       slug: slug,
@@ -55,7 +50,7 @@ export async function getEvent(slug: string) {
     return notFound();
   }
   return event;
-}
+});
 
 export async function getAllEventSlugs() {
   const slugs = await prisma.eventoEvent.findMany({
