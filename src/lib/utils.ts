@@ -56,3 +56,13 @@ export async function getEvent(slug: string) {
   }
   return event;
 }
+
+export async function getAllEventSlugs() {
+  const slugs = await prisma.eventoEvent.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return slugs; // [{ slug: 'event-1' }, { slug: 'event-2' }, ...]
+}
